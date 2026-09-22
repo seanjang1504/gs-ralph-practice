@@ -1,0 +1,260 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ST HTML 배포·저장 안내</title><link rel="stylesheet" href="./guide.css"></head><body><main>
+<a href="./index.html">← 검수 화면</a><h1>ST HTML 버전 안내</h1>
+<p>HTML·CSS·JavaScript 정적 파일만 사용합니다. 서버 프로그램, npm 설치, 환경변수, 외부 데이터베이스가 필요하지 않습니다.</p>
+<h2>Vercel에 올리기</h2><ol><li><code>index.html</code>이 있는 <code>st-static</code> 폴더 전체를 준비합니다.</li><li><a href="https://vercel.com/drop" target="_blank" rel="noreferrer">Vercel Drop</a>에 폴더를 넣고 배포합니다. index.html만 올리면 연결된 JavaScript가 없어 실행되지 않습니다.</li><li>설정을 직접 지정할 때는 Framework: Other, Build Command 없음, Output Directory는 프로젝트 루트로 지정합니다.</li><li>배포된 HTTPS 주소를 휴대폰에서 열고 카메라 사용을 허용합니다.</li></ol>
+<p>회사에서 허용한 정적 파일 배포 절차로 올리세요. Vercel 접속 자체나 외부 모델 다운로드가 차단된 경우에는 해당 접근 허용이 필요합니다. 파일 이름 변경이나 차단 우회를 사용하지 않습니다. 파일을 더블클릭하는 file:// 방식은 모듈·카메라 제약 때문에 지원하지 않습니다.</p>
+<h2>실제 AI 분석</h2><p>공개 CLIP 모델을 브라우저의 WebAssembly로 실행합니다. 사진을 AI 서버로 보내지 않습니다. 처음 접속할 때 jsDelivr와 Hugging Face에서 라이브러리·모델을 약 180MB 다운로드합니다. 다운로드가 보안 정책으로 차단되면 AI 오류와 재시도를 안내하며 모의 판정으로 바꾸지 않습니다.</p>
+<p>모델: Xenova/clip-vit-base-patch32, q8. 고정 revision: d15189d7028b43f1d3e65039190477f6af591c2a. API 키는 사용하지 않습니다. 최신 Chrome·Edge를 권장하며 기기 메모리와 처리 성능에 따라 오래 걸리거나 실행되지 않을 수 있습니다. 모든 ST 기기 지원이나 30초 처리를 보장하지 않습니다.</p>
+<p>바나나·복숭아·수박의 외관 판정을 보조합니다. 숙도와 곰팡이·파손을 구분하며 판단이 어려우면 추가 확인을 안내합니다. 신뢰도 %는 설명 간 상대 일치도입니다. 내부 상태·냄새·식품 안전성·실제 정확도 확률을 측정하지 않습니다.</p>
+<h2>4대 신선 검수 참고</h2><p><a href="./freshness.html">축산·채소·과일·수산의 선도 기준</a>에서 15개 대표 품목군의 확인 항목, 예외와 출처를 조회하고 기준 데이터를 내려받을 수 있습니다. 공개 참고 자료를 보강한 것이며, 모델을 추가 학습하거나 모든 품목의 AI 분석을 지원하는 것은 아닙니다.</p>
+<h2>사진·접수 내역 저장</h2><p>원본 사진과 연결 정보는 <strong>현재 기기·브라우저의 IndexedDB</strong>에만 저장됩니다. 새로고침 후에도 남지만 브라우저 데이터 삭제, 저장 공간 회수, 비공개 모드 종료로 사라질 수 있습니다. 다른 기기·브라우저·배포 주소와 공유되지 않으며 기존 PC 서버 기록도 자동 이관되지 않습니다. 저장 실패 시 완료로 표시하지 않습니다.</p>
+<p>입고 목록과 업체 접수·승인·반려·MD 검토·매입차감은 데모 처리입니다. 해피콜 완료는 이 브라우저의 접수 기록 저장과 데모 응답 확인을 뜻합니다. 실제 업체로 전송하거나 매입차감을 실행하지 않습니다. D일 제한과 업체 승인 조건은 유지됩니다.</p>
+<h2>시연 순서</h2><ol><li>AI 다운로드가 끝나면 ‘검수하기’에서 바코드를 인식하거나 ‘스캔하기’로 예시 상품을 선택합니다.</li><li>실입고 수량을 저장하고 ‘AI 선도 진단하기’를 누릅니다.</li><li>사진 촬영을 누르면 3·2·1 후 촬영하고 실제 AI로 분석합니다. ‘사진으로 시연하기’의 공개 사진도 사용할 수 있습니다.</li><li>부적합·추가 확인 결과에서 접수를 선택하고 불량 수량을 입력합니다. 실입고 10개 중 2개만 요청해도 실입고는 10개로 유지됩니다.</li><li>완료 창에서 홈 또는 계속 스캔하기를 선택하고 접수 내역을 확인합니다.</li></ol>
+<h2>출처와 라이선스</h2><p>공개 시연 사진의 저자·라이선스·원본 링크는 검수 화면 ‘사진으로 시연하기’에 표시됩니다. 사진은 변경 없이 데이터 URL로 포함합니다. 바코드 라이브러리 ZXing의 라이선스는 아래와 같습니다.</p><details><summary>ZXing 라이선스</summary><pre>                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+========================================================================
+jai-imageio
+========================================================================
+
+Copyright (c) 2005 Sun Microsystems, Inc.
+Copyright © 2010-2014 University of Manchester
+Copyright © 2010-2015 Stian Soiland-Reyes
+Copyright © 2015 Peter Hull
+All Rights Reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+- Redistribution of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+- Redistribution in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in
+  the documentation and/or other materials provided with the
+  distribution.
+
+Neither the name of Sun Microsystems, Inc. or the names of
+contributors may be used to endorse or promote products derived
+from this software without specific prior written permission.
+
+This software is provided "AS IS," without a warranty of any
+kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+EXCLUDED. SUN MIDROSYSTEMS, INC. ("SUN") AND ITS LICENSORS SHALL
+NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF
+USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
+DERIVATIVES. IN NO EVENT WILL SUN OR ITS LICENSORS BE LIABLE FOR
+ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL,
+CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND
+REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR
+INABILITY TO USE THIS SOFTWARE, EVEN IF SUN HAS BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGES.
+
+You acknowledge that this software is not designed or intended for
+use in the design, construction, operation or maintenance of any
+nuclear facility.
+</pre></details>
+<p><a href="https://vercel.com/changelog/vercel-drop" target="_blank" rel="noreferrer">Vercel 정적 파일 배포 안내</a> · <a href="https://huggingface.co/docs/transformers.js/v3.8.1/custom_usage" target="_blank" rel="noreferrer">Transformers.js 모델 설정</a></p>
+</main></body></html>
