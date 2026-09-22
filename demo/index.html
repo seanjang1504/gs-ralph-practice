@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ST 선도 진단 데모. 신선상품 확인부터 처리 요청까지 이어지는 90초 영상을 확인하세요.">
+  <title>ST 선도 진단 · 데모 영상</title>
+  <link rel="stylesheet" href="demo.css">
+  <script src="demo.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="eyebrow">ST 선도 진단</p><h1>데모 영상</h1></div>
+    <a href="/">데모 서비스 체험</a>
+  </header>
+  <p class="intro">매장에 도착한 신선상품의 상태를 확인하고, 문제가 있는 상품의 처리 요청까지 이어가는 과정입니다.</p>
+  <video id="film" controls playsinline preload="metadata" poster="poster.jpg" aria-label="ST 선도 진단 90초 데모 영상">
+    <source src="ST-demo-v1.mp4" type="video/mp4">
+    <track kind="captions" srclang="ko" label="한국어" src="ST-demo-v1.ko.vtt">
+    이 브라우저에서는 영상을 재생할 수 없습니다. <a href="ST-demo-v1.mp4">영상 파일 열기</a>
+  </video>
+  <div class="video-meta"><span>90초 · 한국어 자막 · 배경음 포함</span><a href="ST-demo-v1.mp4" download>영상 다운로드</a></div>
+  <nav class="chapters" aria-label="영상 장면 이동">
+    <button data-time="0">문제 상황</button><button data-time="14">서비스 소개</button><button data-time="25">바코드와 수량</button><button data-time="40">AI 진단</button><button data-time="53">처리 요청</button><button data-time="72">처리 내역</button>
+  </nav>
+  <footer>
+    <p>실제 앱 화면을 편집한 시연 영상입니다. 인물은 AI로 연출했으며, 입고 정보와 해피콜·업체 처리 연동은 데모입니다. 사진 AI 분석은 실제 실행 결과를 보여줍니다.</p>
+    <p>상품 증빙 사진: <a href="https://commons.wikimedia.org/wiki/File:Pesca_con_muffa.jpg">Pesca con muffa.jpg</a>, Luigi Chiesa, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. 사진의 상태와 색상을 바꾸지 않고 화면 배치에 맞게 크기를 조정했습니다.</p>
+  </footer>
+</main>
+</body>
+</html>
